@@ -1,0 +1,107 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Cart {
+  createdAt DateTime
+  id        Int        @id @default(autoincrement())
+  updatedAt DateTime   @default(now())
+  userId    Int        @unique
+  User      User       @relation(fields: [userId], references: [id])
+  CartItem  CartItem[]
+}
+
+model CartItem {
+  cartId    Int
+  id        Int     @id @default(autoincrement())
+  productId Int
+  quantity  Int
+  Cart      Cart    @relation(fields: [cartId], references: [id])
+  Product   Product @relation(fields: [productId], references: [id])
+
+  @@unique([cartId, productId])
+}
+
+model Category {
+  id      Int       @id @default(autoincrement())
+  name    String    @unique
+  Product Product[]
+}
+
+model Order {
+  createdAt  DateTime
+  id         Int         @id @default(autoincrement())
+  totalPrice Int
+  updatedAt  DateTime    @default(now())
+  userId     Int
+  status     OrderStatus
+  User       User        @relation(fields: [userId], references: [id])
+  OrderItem  OrderItem[]
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  orderId   Int
+  price     Int
+  productId Int
+  quantity  Int
+  Order     Order   @relation(fields: [orderId], references: [id])
+  Product   Product @relation(fields: [productId], references: [id])
+}
+
+model Product {
+  createdAt     DateTime
+  description   String
+  id            Int         @id @default(autoincrement())
+  image         String?
+  name          String
+  price         Int
+  sellerId      Int
+  updatedAt     DateTime    @default(now())
+  categoryId    Int
+  stockQuantity Int
+  CartItem      CartItem[]
+  OrderItem     OrderItem[]
+  Category      Category    @relation(fields: [categoryId], references: [id])
+  User          User        @relation(fields: [sellerId], references: [id])
+  Review        Review[]
+}
+
+model Review {
+  createdAt   DateTime
+  description String
+  id          Int      @id @default(autoincrement())
+  productId   Int
+  rating      Int
+  updatedAt   DateTime @default(now())
+  userId      Int
+  Product     Product  @relation(fields: [productId], references: [id])
+  User        User     @relation(fields: [userId], references: [id])
+}
+
+model User {
+  createdAt DateTime
+  email     String    @unique
+  id        Int       @id @default(autoincrement())
+  name      String?
+  updatedAt DateTime  @default(now())
+  username  String?   @unique
+  address   String?
+  Cart      Cart?
+  Order     Order[]
+  Product   Product[]
+  Review    Review[]
+}
+
+enum OrderStatus {
+  pending
+  confirmed
+  shipped
+  delivered
+  cancelled
+}
