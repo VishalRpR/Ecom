@@ -8,5 +8,4 @@ const v1Router = express.Router();
 
 v1Router.use('/ping',  pingRouter);
 v1Router.use('/products',  productRouter);
-v1Router.use('/products',  productRouter);
 export default v1Router;
