@@ -13,22 +13,22 @@ app.use(express.json());
  * Registering all the routers and their corresponding routes with out app server object.
  */
 
-import { prisma } from "./lib/prisma";
+// import { prisma } from "./lib/prisma";
 
-app.get("/",async(req,res)=>{
+// app.get("/",async(req,res)=>{
 
-        // Example: Fetch all records from a table
-        // Replace 'user' with your actual model name
+//         // Example: Fetch all records from a table
+//         // Replace 'user' with your actual model name
         
-        const allUsers = await prisma.user.findMany({
-        }
-        );
+//         const allUsers = await prisma.user.findMany({
+//         }
+//         );
 
 
-        res.send(`${JSON.stringify(allUsers)}`)
+//         res.send(`${JSON.stringify(allUsers)}`)
 
       
-})
+// })
 
 
 
