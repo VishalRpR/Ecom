@@ -43,6 +43,7 @@ export type UserMinAggregateOutputType = {
   deletedAt: Date | null
   username: string | null
   address: string | null
+  password: string | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -54,6 +55,7 @@ export type UserMaxAggregateOutputType = {
   deletedAt: Date | null
   username: string | null
   address: string | null
+  password: string | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -65,6 +67,7 @@ export type UserCountAggregateOutputType = {
   deletedAt: number
   username: number
   address: number
+  password: number
   _all: number
 }
 
@@ -86,6 +89,7 @@ export type UserMinAggregateInputType = {
   deletedAt?: true
   username?: true
   address?: true
+  password?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -97,6 +101,7 @@ export type UserMaxAggregateInputType = {
   deletedAt?: true
   username?: true
   address?: true
+  password?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -108,6 +113,7 @@ export type UserCountAggregateInputType = {
   deletedAt?: true
   username?: true
   address?: true
+  password?: true
   _all?: true
 }
 
@@ -206,6 +212,7 @@ export type UserGroupByOutputType = {
   deletedAt: Date | null
   username: string | null
   address: string | null
+  password: string
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -240,6 +247,7 @@ export type UserWhereInput = {
   deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   username?: Prisma.StringNullableFilter<"User"> | string | null
   address?: Prisma.StringNullableFilter<"User"> | string | null
+  password?: Prisma.StringFilter<"User"> | string
   Cart?: Prisma.XOR<Prisma.CartNullableScalarRelationFilter, Prisma.CartWhereInput> | null
   Order?: Prisma.OrderListRelationFilter
   Product?: Prisma.ProductListRelationFilter
@@ -255,6 +263,7 @@ export type UserOrderByWithRelationInput = {
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   username?: Prisma.SortOrderInput | Prisma.SortOrder
   address?: Prisma.SortOrderInput | Prisma.SortOrder
+  password?: Prisma.SortOrder
   Cart?: Prisma.CartOrderByWithRelationInput
   Order?: Prisma.OrderOrderByRelationAggregateInput
   Product?: Prisma.ProductOrderByRelationAggregateInput
@@ -273,6 +282,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   address?: Prisma.StringNullableFilter<"User"> | string | null
+  password?: Prisma.StringFilter<"User"> | string
   Cart?: Prisma.XOR<Prisma.CartNullableScalarRelationFilter, Prisma.CartWhereInput> | null
   Order?: Prisma.OrderListRelationFilter
   Product?: Prisma.ProductListRelationFilter
@@ -288,6 +298,7 @@ export type UserOrderByWithAggregationInput = {
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   username?: Prisma.SortOrderInput | Prisma.SortOrder
   address?: Prisma.SortOrderInput | Prisma.SortOrder
+  password?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -307,6 +318,7 @@ export type UserScalarWhereWithAggregatesInput = {
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   username?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   address?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  password?: Prisma.StringWithAggregatesFilter<"User"> | string
 }
 
 export type UserCreateInput = {
@@ -317,6 +329,7 @@ export type UserCreateInput = {
   deletedAt?: Date | string | null
   username?: string | null
   address?: string | null
+  password: string
   Cart?: Prisma.CartCreateNestedOneWithoutUserInput
   Order?: Prisma.OrderCreateNestedManyWithoutUserInput
   Product?: Prisma.ProductCreateNestedManyWithoutUserInput
@@ -332,6 +345,7 @@ export type UserUncheckedCreateInput = {
   deletedAt?: Date | string | null
   username?: string | null
   address?: string | null
+  password: string
   Cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
   Order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   Product?: Prisma.ProductUncheckedCreateNestedManyWithoutUserInput
@@ -346,6 +360,7 @@ export type UserUpdateInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
   Cart?: Prisma.CartUpdateOneWithoutUserNestedInput
   Order?: Prisma.OrderUpdateManyWithoutUserNestedInput
   Product?: Prisma.ProductUpdateManyWithoutUserNestedInput
@@ -361,6 +376,7 @@ export type UserUncheckedUpdateInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
   Cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
   Order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   Product?: Prisma.ProductUncheckedUpdateManyWithoutUserNestedInput
@@ -376,6 +392,7 @@ export type UserCreateManyInput = {
   deletedAt?: Date | string | null
   username?: string | null
   address?: string | null
+  password: string
 }
 
 export type UserUpdateManyMutationInput = {
@@ -386,6 +403,7 @@ export type UserUpdateManyMutationInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -397,6 +415,7 @@ export type UserUncheckedUpdateManyInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type UserScalarRelationFilter = {
@@ -413,6 +432,7 @@ export type UserCountOrderByAggregateInput = {
   deletedAt?: Prisma.SortOrder
   username?: Prisma.SortOrder
   address?: Prisma.SortOrder
+  password?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
@@ -428,6 +448,7 @@ export type UserMaxOrderByAggregateInput = {
   deletedAt?: Prisma.SortOrder
   username?: Prisma.SortOrder
   address?: Prisma.SortOrder
+  password?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -439,6 +460,7 @@ export type UserMinOrderByAggregateInput = {
   deletedAt?: Prisma.SortOrder
   username?: Prisma.SortOrder
   address?: Prisma.SortOrder
+  password?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
@@ -509,6 +531,7 @@ export type UserCreateWithoutCartInput = {
   deletedAt?: Date | string | null
   username?: string | null
   address?: string | null
+  password: string
   Order?: Prisma.OrderCreateNestedManyWithoutUserInput
   Product?: Prisma.ProductCreateNestedManyWithoutUserInput
   Review?: Prisma.ReviewCreateNestedManyWithoutUserInput
@@ -523,6 +546,7 @@ export type UserUncheckedCreateWithoutCartInput = {
   deletedAt?: Date | string | null
   username?: string | null
   address?: string | null
+  password: string
   Order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   Product?: Prisma.ProductUncheckedCreateNestedManyWithoutUserInput
   Review?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
@@ -552,6 +576,7 @@ export type UserUpdateWithoutCartInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
   Order?: Prisma.OrderUpdateManyWithoutUserNestedInput
   Product?: Prisma.ProductUpdateManyWithoutUserNestedInput
   Review?: Prisma.ReviewUpdateManyWithoutUserNestedInput
@@ -566,6 +591,7 @@ export type UserUncheckedUpdateWithoutCartInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
   Order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   Product?: Prisma.ProductUncheckedUpdateManyWithoutUserNestedInput
   Review?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
@@ -579,6 +605,7 @@ export type UserCreateWithoutOrderInput = {
   deletedAt?: Date | string | null
   username?: string | null
   address?: string | null
+  password: string
   Cart?: Prisma.CartCreateNestedOneWithoutUserInput
   Product?: Prisma.ProductCreateNestedManyWithoutUserInput
   Review?: Prisma.ReviewCreateNestedManyWithoutUserInput
@@ -593,6 +620,7 @@ export type UserUncheckedCreateWithoutOrderInput = {
   deletedAt?: Date | string | null
   username?: string | null
   address?: string | null
+  password: string
   Cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
   Product?: Prisma.ProductUncheckedCreateNestedManyWithoutUserInput
   Review?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
@@ -622,6 +650,7 @@ export type UserUpdateWithoutOrderInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
   Cart?: Prisma.CartUpdateOneWithoutUserNestedInput
   Product?: Prisma.ProductUpdateManyWithoutUserNestedInput
   Review?: Prisma.ReviewUpdateManyWithoutUserNestedInput
@@ -636,6 +665,7 @@ export type UserUncheckedUpdateWithoutOrderInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
   Cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
   Product?: Prisma.ProductUncheckedUpdateManyWithoutUserNestedInput
   Review?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
@@ -649,6 +679,7 @@ export type UserCreateWithoutProductInput = {
   deletedAt?: Date | string | null
   username?: string | null
   address?: string | null
+  password: string
   Cart?: Prisma.CartCreateNestedOneWithoutUserInput
   Order?: Prisma.OrderCreateNestedManyWithoutUserInput
   Review?: Prisma.ReviewCreateNestedManyWithoutUserInput
@@ -663,6 +694,7 @@ export type UserUncheckedCreateWithoutProductInput = {
   deletedAt?: Date | string | null
   username?: string | null
   address?: string | null
+  password: string
   Cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
   Order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   Review?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
@@ -692,6 +724,7 @@ export type UserUpdateWithoutProductInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
   Cart?: Prisma.CartUpdateOneWithoutUserNestedInput
   Order?: Prisma.OrderUpdateManyWithoutUserNestedInput
   Review?: Prisma.ReviewUpdateManyWithoutUserNestedInput
@@ -706,6 +739,7 @@ export type UserUncheckedUpdateWithoutProductInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
   Cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
   Order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   Review?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
@@ -719,6 +753,7 @@ export type UserCreateWithoutReviewInput = {
   deletedAt?: Date | string | null
   username?: string | null
   address?: string | null
+  password: string
   Cart?: Prisma.CartCreateNestedOneWithoutUserInput
   Order?: Prisma.OrderCreateNestedManyWithoutUserInput
   Product?: Prisma.ProductCreateNestedManyWithoutUserInput
@@ -733,6 +768,7 @@ export type UserUncheckedCreateWithoutReviewInput = {
   deletedAt?: Date | string | null
   username?: string | null
   address?: string | null
+  password: string
   Cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
   Order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   Product?: Prisma.ProductUncheckedCreateNestedManyWithoutUserInput
@@ -762,6 +798,7 @@ export type UserUpdateWithoutReviewInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
   Cart?: Prisma.CartUpdateOneWithoutUserNestedInput
   Order?: Prisma.OrderUpdateManyWithoutUserNestedInput
   Product?: Prisma.ProductUpdateManyWithoutUserNestedInput
@@ -776,6 +813,7 @@ export type UserUncheckedUpdateWithoutReviewInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
   Cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
   Order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   Product?: Prisma.ProductUncheckedUpdateManyWithoutUserNestedInput
@@ -839,6 +877,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   deletedAt?: boolean
   username?: boolean
   address?: boolean
+  password?: boolean
   Cart?: boolean | Prisma.User$CartArgs<ExtArgs>
   Order?: boolean | Prisma.User$OrderArgs<ExtArgs>
   Product?: boolean | Prisma.User$ProductArgs<ExtArgs>
@@ -855,6 +894,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   deletedAt?: boolean
   username?: boolean
   address?: boolean
+  password?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -866,6 +906,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   deletedAt?: boolean
   username?: boolean
   address?: boolean
+  password?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -877,9 +918,10 @@ export type UserSelectScalar = {
   deletedAt?: boolean
   username?: boolean
   address?: boolean
+  password?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"createdAt" | "email" | "id" | "name" | "updatedAt" | "deletedAt" | "username" | "address", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"createdAt" | "email" | "id" | "name" | "updatedAt" | "deletedAt" | "username" | "address" | "password", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Cart?: boolean | Prisma.User$CartArgs<ExtArgs>
   Order?: boolean | Prisma.User$OrderArgs<ExtArgs>
@@ -907,6 +949,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     deletedAt: Date | null
     username: string | null
     address: string | null
+    password: string
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1342,6 +1385,7 @@ export interface UserFieldRefs {
   readonly deletedAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly username: Prisma.FieldRef<"User", 'String'>
   readonly address: Prisma.FieldRef<"User", 'String'>
+  readonly password: Prisma.FieldRef<"User", 'String'>
 }
     
 

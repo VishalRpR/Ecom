@@ -28,7 +28,15 @@ export async function createUser(userData:createUserDTO){
             email:userData.email,
             address:userData.address,
             username:userData.username,
-        }
+            password:userData.password
+        },
+        select: {
+            id: true,
+            name: true,
+            email: true,
+            address: true,
+            username: true,
+          },
         });
 
          return allUsers

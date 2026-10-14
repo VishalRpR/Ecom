@@ -1,10 +1,11 @@
 import { createUserDTO } from "../dto/user.dto";
 import { createUser, listUser, listUsers } from "../repositories/user.repository";
+import bcrypt from 'bcrypt'
 
 export async function createUserService(UserData:createUserDTO){
 
-
-    const user = await createUser(UserData)
+      const hashedpassword  = await bcrypt.hash(UserData.password,10)
+      const user = await createUser({...UserData,password:hashedpassword})
     return user 
 }
 

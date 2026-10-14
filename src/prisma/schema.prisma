@@ -95,6 +95,7 @@ model User {
   deletedAt  DateTime?
   username  String?   @unique
   address   String?
+  password  String
   Cart      Cart?
   Order     Order[]
   Product   Product[]
