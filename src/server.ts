@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import express from 'express';
 import { serverConfig } from './config';
 import v1Router from './routers/v1/index.router';
@@ -6,13 +5,12 @@ import v2Router from './routers/v2/index.router';
 import { appErrorHandler, genericErrorHandler } from './middlewares/error.middleware';
 import logger from './config/logger.config';
 import { attachCorrelationIdMiddleware } from './middlewares/correlation.middleware';
-import cors from 'cors'
+import cors from 'cors';
 
 const app = express();
 
-
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 /**
  * Registering all the routers and their corresponding routes with out app server object.
  */
@@ -54,57 +52,3 @@ app.listen(serverConfig.PORT, () => {
     logger.info(`Server is running on http://localhost:${serverConfig.PORT}`);
     logger.info(`Press Ctrl+C to stop the server.`);
 });
-=======
-import express from 'express';
-import { serverConfig } from './config';
-import v1Router from './routers/v1/index.router';
-import v2Router from './routers/v2/index.router';
-import { appErrorHandler, genericErrorHandler } from './middlewares/error.middleware';
-import logger from './config/logger.config';
-import { attachCorrelationIdMiddleware } from './middlewares/correlation.middleware';
-const app = express();
-
-app.use(express.json());
-
-/**
- * Registering all the routers and their corresponding routes with out app server object.
- */
-
-// import { prisma } from "./lib/prisma";
-
-// app.get("/",async(req,res)=>{
-
-//         // Example: Fetch all records from a table
-//         // Replace 'user' with your actual model name
-        
-//         const allUsers = await prisma.user.findMany({
-//         }
-//         );
-
-
-//         res.send(`${JSON.stringify(allUsers)}`)
-
-      
-// })
-
-
-
-
-app.use(attachCorrelationIdMiddleware);
-app.use('/api/v1', v1Router);
-app.use('/api/v2', v2Router); 
-
-
-/**
- * Add the error handler middleware
- */
-
-app.use(appErrorHandler);
-app.use(genericErrorHandler);
-
-
-app.listen(serverConfig.PORT, () => {
-    logger.info(`Server is running on http://localhost:${serverConfig.PORT}`);
-    logger.info(`Press Ctrl+C to stop the server.`);
-});
->>>>>>> origin/master

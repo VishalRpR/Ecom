@@ -1,9 +1,4 @@
 node_modules/
-<<<<<<< HEAD
-.env
-=======
 dist/
 .env
 logs/
-
->>>>>>> origin/master

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { z } from "zod";
 
 export const userSchema = z.object({
@@ -7,14 +6,4 @@ export const userSchema = z.object({
     username: z.string().min(1),
     address:z.string().min(1)
 
-=======
-import { z } from "zod";
-
-export const userSchema = z.object({
-    name: z.string().min(1),
-    email: z.string().min(1),
-    username: z.string().min(1),
-    address:z.string().min(1)
-
->>>>>>> origin/master
 })

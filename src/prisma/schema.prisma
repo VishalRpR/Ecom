@@ -92,11 +92,7 @@ model User {
   id        Int       @id @default(autoincrement())
   name      String?
   updatedAt DateTime  @default(now())
-<<<<<<< HEAD
   deletedAt  DateTime?
-=======
-  deletedAt  DateTime
->>>>>>> origin/master
   username  String?   @unique
   address   String?
   Cart      Cart?
