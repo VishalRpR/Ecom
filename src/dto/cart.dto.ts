@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export type createCartItemDTO={
             productId:number;
             cartId:number;
@@ -5,3 +6,12 @@ export type createCartItemDTO={
 
 
 }
+=======
+export type createCartItemDTO={
+            productId:number;
+            cartId:number;
+            quantity:number
+
+
+}
+>>>>>>> origin/master

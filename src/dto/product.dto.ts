@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export type createProductDTO={
     name:string;
     description:string;
@@ -6,4 +7,14 @@ export type createProductDTO={
     stockQuantity:number;
     categoryId:number;
     sellerId:number;
+=======
+export type createProductDTO={
+    name:string;
+    description:string;
+    image:string;
+    price:number;
+    stockQuantity:number;
+    categoryId:number;
+    sellerId:number;
+>>>>>>> origin/master
 }
