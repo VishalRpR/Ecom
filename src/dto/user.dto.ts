@@ -5,3 +5,10 @@ export type createUserDTO={
     username:string;
     password:string;
 }
+
+
+export type listuserDTO={
+
+    email:string;
+    password:string
+}

@@ -7,14 +7,34 @@ export async function listUsers(){
     return allUsers
 }
 
-export async function listUser(id:number){
+export async function listUser(id:number){ 
 
-    const allUsers = await prisma.user.findUnique({
+    const user = await prisma.user.findUnique({
         where:{
             id:id
         }
     });
-    return allUsers
+    return user
+}
+
+
+export async function listUserByEmail(email:string){
+
+    const user = await prisma.user.findUnique({
+        where:{
+
+            email:email
+        },
+        select: {
+            id: true,
+            name: true,
+            email: true,
+            address: true,
+            username: true,
+            password: true
+          },
+    });
+    return user
 }
 
 
@@ -43,3 +63,5 @@ export async function createUser(userData:createUserDTO){
 
     //res.send(`${JSON.stringify(allUsers)}`)
 }
+
+
