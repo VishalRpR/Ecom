@@ -7,7 +7,7 @@ import authMiddlware from '../../Auth/authMiddlware';
 const UserRouter = express.Router();
 
 UserRouter.post('/', validateRequestBody(userSchema),createUserHandler); // TODO: Resolve this TS compilation issue
-UserRouter.get('/', listUsersHandler); // TODO: Resolve this TS compilation issue
+UserRouter.get('/', authMiddlware,listUsersHandler); // TODO: Resolve this TS compilation issue
 // UserRouter.get('/:id', listUserHandler); // TODO: Resolve this TS compilation issue
 
 UserRouter.post('/email', authMiddlware,listUserByEmailHandler); 

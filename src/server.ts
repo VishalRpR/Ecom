@@ -6,11 +6,24 @@ import { appErrorHandler, genericErrorHandler } from './middlewares/error.middle
 import logger from './config/logger.config';
 import { attachCorrelationIdMiddleware } from './middlewares/correlation.middleware';
 import cors from 'cors';
+import cookieParser from "cookie-parser"
 
 const app = express();
+const corsOptions = {
+    origin:'http://localhost:5173', 
+     credentials:true,            //access-control-allow-credentials:true
+     optionSuccessStatus:200
+  };
 
+app.use(cors(corsOptions));
+// Source - https://stackoverflow.com/a/42062978
+// Posted by izik f, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-10-27, License - CC BY-SA 4.0
+
+app.use(cookieParser())
 app.use(express.json());
-app.use(cors());
+
+
 /**
  * Registering all the routers and their corresponding routes with out app server object.
  */
@@ -36,6 +49,7 @@ app.use(cors());
 
 
 app.use(attachCorrelationIdMiddleware);
+
 app.use('/api/v1', v1Router);
 app.use('/api/v2', v2Router); 
 

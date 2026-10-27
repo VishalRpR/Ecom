@@ -54,6 +54,7 @@ export async function authenticateUserService(data:listuserDTO){
             );
 
             console.log(token)
+            
             return token
 
    }else{
