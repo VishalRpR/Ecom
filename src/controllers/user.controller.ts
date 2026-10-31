@@ -39,18 +39,17 @@ export async function listUserHandler(req: Request, res: Response, next: NextFun
 
 export async function listUserByEmailHandler(req: Request, res: Response, next: NextFunction) {
 
-    console.log("inside the controller checking if request is comming or now", req.body.email)
+    console.log("inside the controller checking if request is comming or now", req.email)
 
-    const UserResponse = await listUserByEmailService(String(req.body.email))
+    const UserResponse = await listUserByEmailService(String(req.email))
 
-    console.log("inside the controller checking if request is comming or now", req.body.email)
+    console.log("inside the controller checking if request is comming or now", req.email)
 
-    const token = res.locals.token
+    
     res.status(StatusCodes.OK).json({
         message: "user listed successfully",
         data: UserResponse,
-        success: true,
-        tkn: token
+        success: true
     })
 
 }

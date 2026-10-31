@@ -96,12 +96,17 @@ model User {
   username  String?   @unique
   address   String?
   password  String
+  role       Role  @default(User)
   Cart      Cart?
   Order     Order[]
   Product   Product[]
   Review    Review[]
 }
 
+enum Role {
+  Admin
+  User
+}
 enum OrderStatus {
   pending
   confirmed

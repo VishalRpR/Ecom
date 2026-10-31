@@ -10,7 +10,7 @@ UserRouter.post('/', validateRequestBody(userSchema),createUserHandler); // TODO
 UserRouter.get('/', authMiddlware,listUsersHandler); // TODO: Resolve this TS compilation issue
 // UserRouter.get('/:id', listUserHandler); // TODO: Resolve this TS compilation issue
 
-UserRouter.post('/email', authMiddlware,listUserByEmailHandler); 
+UserRouter.get('/email', authMiddlware,listUserByEmailHandler); 
 UserRouter.post('/authenticate', authenticateUserHandler); 
 
 export default UserRouter;

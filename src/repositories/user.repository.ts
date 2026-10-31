@@ -24,15 +24,7 @@ export async function listUserByEmail(email:string){
         where:{
 
             email:email
-        },
-        select: {
-            id: true,
-            name: true,
-            email: true,
-            address: true,
-            username: true,
-            password: true
-          },
+        }
     });
     return user
 }

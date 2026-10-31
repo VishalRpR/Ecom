@@ -9,6 +9,14 @@
 * 🟢 You can import this file directly.
 */
 
+export const Role = {
+  Admin: 'Admin',
+  User: 'User'
+} as const
+
+export type Role = (typeof Role)[keyof typeof Role]
+
+
 export const OrderStatus = {
   pending: 'pending',
   confirmed: 'confirmed',

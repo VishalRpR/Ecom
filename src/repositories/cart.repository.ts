@@ -3,7 +3,7 @@ import { prisma } from "../lib/prisma";
 
 export async function listCartItems() {
 
-    const allCartItems = await prisma.product.findMany({});
+    const allCartItems = await prisma.cartItem.findMany({});
     return allCartItems
 }
 

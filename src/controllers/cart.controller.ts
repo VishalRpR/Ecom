@@ -15,6 +15,7 @@ export async function createCartItemHandler(req:Request , res:Response ,next:Nex
 
 
 export async function listCartItemsHandler(req:Request , res:Response ,next:NextFunction){
+    console.log("reaching in listcartitemhandler")
     const CartItemsResponse= await listCartItemsService()
 
     res.status(StatusCodes.OK).json({
