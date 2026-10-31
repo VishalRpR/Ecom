@@ -2,6 +2,7 @@ import dotenv from 'dotenv'
 import { Request, Response, NextFunction } from "express";
 import jwt, { Secret } from 'jsonwebtoken';
 
+
 dotenv.config({
     path: '../../.env'
 })
@@ -30,12 +31,12 @@ async function authMiddlware(req: Request, res: Response, next: NextFunction) {
                 success:false
             })
         } else {
-            const verify: any = jwt.verify(token, secret)
+            const verify:any = jwt.verify(token, secret)
+            console.log(verify)
             console.log(verify.email!=null)
             if (verify.email!=null) {
                 console.log("here i come")
-                req.email=verify.email
-                console.log(req.body)
+                req.email=verify.email;
                 
             }
 
@@ -45,7 +46,10 @@ async function authMiddlware(req: Request, res: Response, next: NextFunction) {
 
 
     } catch (error) {
-
+         console.log(error)
+         res.json(
+            error
+         )
     }
 
 }
