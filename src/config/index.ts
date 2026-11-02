@@ -22,3 +22,17 @@ export const dbConfig: DbConfig = {
 export const serverConfig: ServerConfig = {
     PORT: Number(process.env.PORT) || 3001
 };
+
+
+import { S3Client } from "@aws-sdk/client-s3";
+
+export const s3Client = new S3Client({
+  region: String(process.env.AWS_REGION),
+  credentials: {
+    accessKeyId: String(process.env.AWS_ACCESS_KEY),
+    secretAccessKey: String(process.env.AWS_SECRET_KEY),
+  },
+});
+
+export const bucketName = String(process.env.AWS_BUCKET_NAME)
+

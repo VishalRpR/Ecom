@@ -2,7 +2,7 @@ import express from 'express';
 import { createCartHandler, createCartItemHandler, listCartItemsHandler } from '../../controllers/cart.controller';
 import { validateRequestBody } from '../../validators';
 import { cartItemSchema } from '../../validators/cart.validator';
-import authMiddlware from '../../Auth/authMiddlware';
+import authMiddlware from '../../middlewares/authMiddlware';
 
 const cartRouter = express.Router();
 

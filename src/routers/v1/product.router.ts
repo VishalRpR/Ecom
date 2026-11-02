@@ -1,12 +1,12 @@
 import express from 'express';
-import {  validateRequestBody } from '../../validators';
 import { createProductHandler, listProductHandler, listProductsHandler } from '../../controllers/product.controller';
-import { productSchema } from '../../validators/product.validator';
-import authMiddlware from '../../Auth/authMiddlware';
+
+import authMiddlware from '../../middlewares/authMiddlware';
+import { uploadMiddlware } from '../../middlewares/uploadMiddleware';
 
 const productRouter = express.Router();
 
-productRouter.post('/', validateRequestBody(productSchema), authMiddlware  ,createProductHandler); // TODO: Resolve this TS compilation issue
+productRouter.post('/', authMiddlware  ,uploadMiddlware.single("image"),createProductHandler); // TODO: Resolve this TS compilation issue
 productRouter.get('/',listProductsHandler); // TODO: Resolve this TS compilation issue
 productRouter.get('/:id', listProductHandler); // TODO: Resolve this TS compilation issue
 

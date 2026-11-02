@@ -6,4 +6,5 @@ export type createProductDTO={
     stockQuantity:number;
     categoryId:number;
     sellerId:number;
+    useremail:string;
 }

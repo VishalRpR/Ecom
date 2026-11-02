@@ -2,7 +2,7 @@ import express from 'express';
 import {  validateRequestBody } from '../../validators';
 import { listOrdersHandler, makeOrderHandler } from '../../controllers/order.controller';
 import { orderSchema } from '../../validators/order.validator';
-import authMiddlware from '../../Auth/authMiddlware';
+import authMiddlware from '../../middlewares/authMiddlware';
 
 const orderRouter = express.Router();
 
