@@ -34,13 +34,13 @@ export async function listUserByEmail(email:string){
 
 export async function createUser(userData:createUserDTO){
 
-    const allUsers = await prisma.user.create({
+    const user = await prisma.user.create({
         data:{
             name:userData.name,
             email:userData.email,
             address:userData.address,
             username:userData.username,
-            password:userData.password
+            password:userData.password,
         },
         select: {
             id: true,
@@ -51,7 +51,13 @@ export async function createUser(userData:createUserDTO){
           },
         });
 
-         return allUsers
+       await prisma.cart.create({
+           data:{
+            userId:user.id
+           }
+        })
+
+         return user
 
     //res.send(`${JSON.stringify(allUsers)}`)
 }

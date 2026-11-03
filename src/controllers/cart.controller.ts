@@ -1,6 +1,7 @@
 import { Request,Response, NextFunction } from "express"
-import { createCartItemService, createCartService, listCartItemsService} from "../services/cart.service"
+import { createCartItemService, createCartService, listCartItemsService, listCartService} from "../services/cart.service"
 import { StatusCodes } from "http-status-codes"
+import { listUserByEmail } from "../repositories/user.repository"
 
 
 export async function createCartItemHandler(req:Request , res:Response ,next:NextFunction){
@@ -15,7 +16,9 @@ export async function createCartItemHandler(req:Request , res:Response ,next:Nex
 
 
 export async function listCartItemsHandler(req:Request , res:Response ,next:NextFunction){
+
     console.log("reaching in listcartitemhandler")
+    
     const CartItemsResponse= await listCartItemsService()
 
     res.status(StatusCodes.OK).json({
@@ -23,8 +26,25 @@ export async function listCartItemsHandler(req:Request , res:Response ,next:Next
         data:CartItemsResponse,
         success:true
     })
-
 }
+    
+
+    export async function listCartHandler(req:Request,res:Response,next:NextFunction){
+      const user = await listUserByEmail(req.email)
+
+    
+      if(user){
+        const cart = await listCartService(user.id)
+       
+        res.status(StatusCodes.OK).json({
+            message:"all CArtItems listed successfully",
+            data:cart,
+            success:true
+          })
+      }
+     
+    }
+
 
 
 export async function createCartHandler(req:Request , res:Response ,next:NextFunction){

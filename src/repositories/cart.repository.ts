@@ -3,10 +3,43 @@ import { prisma } from "../lib/prisma";
 
 export async function listCartItems() {
 
-    const allCartItems = await prisma.cartItem.findMany({});
+    const allCartItems = await prisma.cartItem.findMany({
+    });
     return allCartItems
 }
 
+
+export async function listCart(userId: number) {
+    const cart = await prisma.cart.findFirst({
+        where: {
+            userId: userId
+        }
+    })
+
+    console.log(cart)
+
+    var cartId = -1000
+    if (cart) {
+        cartId = cart.id
+    }
+
+
+
+    console.log(cartId)
+    const allCartItems = await prisma.cartItem.findMany({
+        where: {
+            cartId: cartId
+        },
+        include: {
+            Product: true
+        }
+    });
+
+
+
+
+    return allCartItems
+}
 
 
 
